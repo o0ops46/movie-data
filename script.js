@@ -33,12 +33,13 @@ let movieData = {
     cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
   },
 };
-const div = document.createElement('div');
 const movieList = document.getElementById('movie-list');
 const displayMovies = function () {
-  for (const property in movieData) {
-    div.innerHTML = `${property}, ${property}`;
-    movieList.append(div);
+  for (const [key, value] of Object.entries(movieData)) {
+    // console.log(`${key}: ${value.year} ${value.runtime}`);
+    const div = document.createElement('div');
+    div.setAttribute('style', 'border: 2px solid grey;');
+    div.innerHTML = `${key}${value}`;
   }
 };
 displayMovies();
