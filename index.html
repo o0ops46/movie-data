@@ -10,6 +10,14 @@
   </head>
   <body>
     <h2>Movies</h2>
+    <label for="filter">Sort by:</label>
+    <select name="filter-movie" id="sort-by">
+      <option value="default-order">Default</option>
+      <option value="ranking">Ranking</option>
+      <option value="release-date">Release Date</option>
+      <option value="runtime">Runtime</option>
+    </select>
+    <!-- <button id="filter-btn">Filter</button> -->
     <div id="movie-list"></div>
   </body>
 </html>

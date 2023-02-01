@@ -1,3 +1,4 @@
+'use strict';
 let movieData = {
   'The Darjeeling Limited': {
     plot: "A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.",
@@ -33,13 +34,28 @@ let movieData = {
     cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
   },
 };
+//render the movies
 const movieList = document.getElementById('movie-list');
 const displayMovies = function () {
   for (const [key, value] of Object.entries(movieData)) {
-    // console.log(`${key}: ${value.year} ${value.runtime}`);
     const div = document.createElement('div');
-    div.setAttribute('style', 'border: 2px solid grey;');
-    div.innerHTML = `${key}${value}`;
+    div.setAttribute(
+      'style',
+      'border: 2px solid grey; margin: 20px; padding: 10px;'
+    );
+
+    movieList.append(div);
+    div.innerHTML = `The movie: <em> "${key}"</em> from ${value['year']} has ${value['runtime']} minutes runtime and has a rating of ${value['rating']} on IMDB. <br> ${value['plot']} <br> Some of the actors are: ${value['cast']} `;
   }
 };
 displayMovies();
+// allow the user to filter the movies
+const filteredMovies = movieData.filter(movie => {
+  if (movie.rating >= 7.7) {
+    return true;
+  }
+  return false;
+});
+console.log(filteredMovies);
+//create a function that filters the movies.
+// create a filter button when it's clicked to call the specific function
