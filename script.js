@@ -49,13 +49,77 @@ const displayMovies = function () {
   }
 };
 displayMovies();
-// allow the user to filter the movies
-const filteredMovies = movieData.filter(movie => {
-  if (movie.rating >= 7.7) {
-    return true;
-  }
-  return false;
-});
-console.log(filteredMovies);
-//create a function that filters the movies.
-// create a filter button when it's clicked to call the specific function
+function Movie(title, year, plot, cast, runtime, rating) {
+  this.title = title;
+  this.year = year;
+  this.plot = plot;
+  this.cast = cast;
+  this.runtime = runtime;
+  this.rating = rating;
+}
+
+// add more movies
+function addMovie() {
+  let form = document.createElement('form');
+  //style the form
+  form.setAttribute(
+    'style',
+    'display: flex; flex-direction: column; width: 300px;'
+  );
+  //getting the title
+  let titleInput = document.createElement('input');
+  titleInput.type = 'text';
+  titleInput.placeholder = 'Please enter the title of the movie';
+
+  // append to the form
+  form.appendChild(titleInput);
+  //getting the plot
+  let plotInput = document.createElement('input');
+  plotInput.type = 'text';
+  plotInput.placeholder = 'What is the plot of this movie?';
+  form.appendChild(plotInput);
+  //get the year
+  let yearInput = document.createElement('input');
+  yearInput.type = 'number';
+  yearInput.placeholder = 'What is the year of this movie?';
+  form.appendChild(yearInput);
+  // get the cast
+  let castInput = document.createElement('input');
+  castInput.type = 'text';
+  castInput.placeholder = 'Who is acting in this movie?';
+  form.appendChild(castInput);
+  let runtimeInput = document.createElement('input');
+  runtimeInput.type = 'number';
+  runtimeInput.placeholder = 'How long is this movie?';
+  form.appendChild(runtimeInput);
+  let ratingInput = document.createElement('input');
+  ratingInput.type = 'number';
+  ratingInput.placeholder = 'What is the rating of this movie?';
+  form.appendChild(ratingInput);
+  // create submit button
+  let submitButton = document.createElement('button');
+  submitButton.setAttribute(
+    'style',
+    'width: 70px; margin-top: 5px;margin-left: 30%;'
+  );
+  submitButton.innerHTML = 'Submit';
+  form.appendChild(submitButton);
+
+  //get the library container
+  let addMovieContainer = document.getElementById('addMovieContainer');
+  addMovieContainer.appendChild(form);
+  //push the new book to the myLibrary array
+  submitButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    let title = titleInput.value;
+    let year = yearInput.value;
+    let plot = plotInput.value;
+    let cast = castInput.value;
+    let runtime = runtimeInput.value;
+    let rating = ratingInput.value;
+    let movie = new Movie(title, year, plot, cast, runtime, rating);
+    movieData = movieData + movie;
+    displayMovies();
+  });
+}
+addMovie();

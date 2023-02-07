@@ -2,3 +2,10 @@
   width: 100px;
   height: 20px;
 }
+.controls {
+  display: flex;
+  margin: 10px;
+}
+.addMovie {
+  margin: 10px;
+}
