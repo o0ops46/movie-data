@@ -34,20 +34,54 @@ let movieData = {
     cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
   },
 };
-//display all movies to the HTML
+let movieDataArray = [];
+
 const movieList = document.getElementById('movie-list');
-const movieDataArray = function () {
-  for (const [movieName, movieDetails] of Object.entries(movieData)) {
+const displayMovieData = () => {
+  movieList.innerHTML = '';
+  for (const {
+    movieName,
+    plot,
+    rating: rank,
+    year,
+    cast,
+    runtime,
+  } of movieArray) {
     const p = document.createElement('p');
     p.innerHTML = `${movieName}`;
     movieList.appendChild(p);
     const ul = document.createElement('ul');
-    for (const detail in movieDetails) {
-      const li = document.createElement('li');
-      li.innerHTML = `${detail}: ${movieDetails[detail]}`;
-      ul.appendChild(li);
-    }
+    const movieDetails = `
+      <li>Plot: ${plot}</li>
+      <li>Rank: ${rank}</li>
+      <li>Year: ${year}</li>
+      <li>Cast: ${cast}</li>
+      <li>Run Time: ${runtime}</li>      
+    `;
+    ul.innerHTML = movieDetails;
     movieList.appendChild(ul);
   }
 };
-movieDataArray();
+
+const sortBy = event => {
+  const sortByVal = event.target.value;
+  if (sortByVal) {
+    movieArray.sort((a, b) => a[sortByVal] - b[sortByVal]);
+  } else {
+    movieArray = originalMovieArray.slice();
+  }
+  displayMovieData();
+};
+
+const originalMovieArray = Object.entries(movieData).reduce(
+  (arr, [movieName, movieDetails]) => {
+    const movieObj = { movieName, ...movieDetails };
+    arr.push(movieObj);
+    return arr;
+  },
+  []
+);
+
+let movieArray = originalMovieArray.slice();
+document.getElementById('sort-by').addEventListener('input', sortBy);
+displayMovieData();
