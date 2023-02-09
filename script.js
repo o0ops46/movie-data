@@ -35,18 +35,15 @@ let movieData = {
   },
 };
 const movieList = document.getElementById('movie-list');
-
 let movieDataArray = function () {
   for (const [key, value] of Object.entries(movieData)) {
-    [key].forEach(element => {
-      let ul = document.createElement('ul');
-      console.log(value);
-      ul.innerHTML = element;
-      movieList.appendChild(ul);
-    });
+    const ul = document.createElement('ul');
+    ul.innerHTML = `${key}`;
+    movieList.appendChild(ul);
+    let li = document.createElement('li');
+    ul.appendChild(li);
   }
 };
-
 // find a way to add the content of the movie
 movieDataArray();
 // objectToArray();
