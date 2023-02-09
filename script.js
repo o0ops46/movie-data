@@ -34,19 +34,20 @@ let movieData = {
     cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
   },
 };
+//display all movies to the HTML
 const movieList = document.getElementById('movie-list');
-let movieDataArray = function () {
-  for (const [key, value] of Object.entries(movieData)) {
+const movieDataArray = function () {
+  for (const [movieName, movieDetails] of Object.entries(movieData)) {
+    const p = document.createElement('p');
+    p.innerHTML = `${movieName}`;
+    movieList.appendChild(p);
     const ul = document.createElement('ul');
-    ul.setAttribute('style', 'font-size: 20px;margin-bottom: 20px;');
-    ul.innerHTML = `${key}`;
-    movieList.appendChild(ul);
-    for (const [key1, val] of Object.entries(value)) {
-      let li = document.createElement('li');
-      // key1[0].toUpperCase(); not working
-      li.innerHTML = `${key1}: ${val}`;
+    for (const detail in movieDetails) {
+      const li = document.createElement('li');
+      li.innerHTML = `${detail}: ${movieDetails[detail]}`;
       ul.appendChild(li);
     }
+    movieList.appendChild(ul);
   }
 };
 movieDataArray();
