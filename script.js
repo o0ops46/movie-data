@@ -39,11 +39,10 @@ let movieDataArray = function () {
   for (const [key, value] of Object.entries(movieData)) {
     const ul = document.createElement('ul');
     ul.innerHTML = `${key}`;
+    //I cannot figure out how to display in the html the name of the movie + the other objects for each movie (year, plot etc)
     movieList.appendChild(ul);
     let li = document.createElement('li');
     ul.appendChild(li);
   }
 };
-// find a way to add the content of the movie
 movieDataArray();
-// objectToArray();
