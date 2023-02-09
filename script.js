@@ -38,11 +38,15 @@ const movieList = document.getElementById('movie-list');
 let movieDataArray = function () {
   for (const [key, value] of Object.entries(movieData)) {
     const ul = document.createElement('ul');
+    ul.setAttribute('style', 'font-size: 20px;margin-bottom: 20px;');
     ul.innerHTML = `${key}`;
-    //I cannot figure out how to display in the html the name of the movie + the other objects for each movie (year, plot etc)
     movieList.appendChild(ul);
-    let li = document.createElement('li');
-    ul.appendChild(li);
+    for (const [key1, val] of Object.entries(value)) {
+      let li = document.createElement('li');
+      // key1[0].toUpperCase(); not working
+      li.innerHTML = `${key1}: ${val}`;
+      ul.appendChild(li);
+    }
   }
 };
 movieDataArray();
