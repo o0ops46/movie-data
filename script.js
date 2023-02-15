@@ -34,7 +34,11 @@ let movieData = {
     cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
   },
 };
+//convert from object to array
+
+/*
 let movieDataArray = [];
+
 
 const movieList = document.getElementById('movie-list');
 const displayMovieData = () => {
@@ -85,3 +89,4 @@ const originalMovieArray = Object.entries(movieData).reduce(
 let movieArray = originalMovieArray.slice();
 document.getElementById('sort-by').addEventListener('input', sortBy);
 displayMovieData();
+*/
