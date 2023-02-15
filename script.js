@@ -34,11 +34,8 @@ let movieData = {
     cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'],
   },
 };
-//convert from object to array
 
-/*
 let movieDataArray = [];
-
 
 const movieList = document.getElementById('movie-list');
 const displayMovieData = () => {
@@ -52,6 +49,14 @@ const displayMovieData = () => {
     runtime,
   } of movieArray) {
     const p = document.createElement('p');
+    const btnDelete = document.createElement('button');
+    const btnFavorite = document.createElement('button');
+    // change the style of the button
+    // make it delete the movie / add to favorite.
+    btnFavorite.innerHTML = '<3';
+    btnDelete.innerHTML = 'Delete';
+    movieList.appendChild(btnDelete);
+    movieList.appendChild(btnFavorite);
     p.innerHTML = `${movieName}`;
     movieList.appendChild(p);
     const ul = document.createElement('ul');
@@ -89,4 +94,3 @@ const originalMovieArray = Object.entries(movieData).reduce(
 let movieArray = originalMovieArray.slice();
 document.getElementById('sort-by').addEventListener('input', sortBy);
 displayMovieData();
-*/
