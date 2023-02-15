@@ -50,24 +50,27 @@ const displayMovieData = () => {
   } of movieArray) {
     const p = document.createElement('p');
     const btnDelete = document.createElement('button');
-    const btnFavorite = document.createElement('button');
-    // change the style of the button
-    // make it delete the movie / add to favorite.
-    btnFavorite.innerHTML = '<3';
     btnDelete.innerHTML = 'Delete';
-    movieList.appendChild(btnDelete);
-    movieList.appendChild(btnFavorite);
-    p.innerHTML = `${movieName}`;
-    movieList.appendChild(p);
     const ul = document.createElement('ul');
     const movieDetails = `
-      <li>Plot: ${plot}</li>
-      <li>Rank: ${rank}</li>
-      <li>Year: ${year}</li>
-      <li>Cast: ${cast}</li>
-      <li>Run Time: ${runtime}</li>      
+    <li><strong>Title: </strong>${movieName}</li>
+    <li><strong>Plot: </strong>${plot}</li>
+    <li><strong>Rank: </strong> ${rank}</li>
+    <li><strong>Year: </strong>${year}</li>
+    <li><strong>Cast: </strong>${cast}</li>
+    <li><strong>Run Time: </strong>${runtime}</li>      
     `;
     ul.innerHTML = movieDetails;
+    btnDelete.setAttribute(
+      'style',
+      'border: 2px solid black; border-radius: 10px; margin: 5px;'
+    );
+    // when the btn is clicked, delete the movie.
+    btnDelete.addEventListener('click', function () {
+      btnDelete.parentNode.remove();
+      // btnDelete.parentElement.remove();
+    });
+    ul.appendChild(btnDelete);
     movieList.appendChild(ul);
   }
 };
