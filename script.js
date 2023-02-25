@@ -35,7 +35,7 @@ let movieData = {
   },
 };
 
-let movieDataArray = [];
+// let movieDataArray = [];
 
 const movieList = document.getElementById('movie-list');
 const displayMovieData = () => {
@@ -48,7 +48,6 @@ const displayMovieData = () => {
     cast,
     runtime,
   } of movieArray) {
-    const p = document.createElement('p');
     const btnDelete = document.createElement('button');
     btnDelete.innerHTML = 'Delete';
     const ul = document.createElement('ul');
