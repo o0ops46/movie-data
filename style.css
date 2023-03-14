@@ -1,5 +1,5 @@
 body {
-  background-color: #6f90ab;
+  background-color: #020024;
 }
 #filter-btn {
   width: 100px;
@@ -7,6 +7,7 @@ body {
 }
 .controls {
   margin-left: 30%;
+  padding: 20px;
   color: white;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -19,6 +20,8 @@ h2 {
   color: white;
 }
 #movie-list {
+  padding: 20px;
+  background-color: #095879;
   font-family: 'Courier New', Courier, monospace;
   display: flex;
   align-items: center;
